@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
-import { dummyDateTimeData, dummyShowsData } from "../assets/assets";
-import BlurCircle from "../components/extras/BlurCircle";
-
 import { HeartIcon, PlayCircle, StarIcon } from "lucide-react";
 
 import timeFormat from "../lib/timeFormat";
+
+import BlurCircle from "../components/extras/BlurCircle";
 import DateSelect from "../components/DateSelect";
 import MovieCard from "../components/extras/MovieCard";
 import Loading from "../components/extras/Loading";
 
+import { dummyDateTimeData, dummyShowsData } from "../assets/assets";
 const MovieDetails = () => {
   const navigate = useNavigate();
 

@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { ArrowRightIcon, ClockIcon } from "lucide-react";
+import toast from "react-hot-toast";
+
+import isoTimeFormat from "../lib/isoTimeFormat";
+
+import Loading from "../components/extras/Loading";
+import BlurCircle from "../components/extras/BlurCircle";
 
 import { dummyShowsData, dummyDateTimeData, assets } from "../assets/assets";
-import Loading from "../components/extras/Loading";
-import { ArrowRightIcon, ClockIcon } from "lucide-react";
-import isoTimeFormat from "../lib/isoTimeFormat";
-import BlurCircle from "../components/extras/BlurCircle";
-import toast from "react-hot-toast";
 
 const SeatLayout = () => {
   const groupRows = [
