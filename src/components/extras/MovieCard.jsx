@@ -18,7 +18,7 @@ const MovieCard = ({ movie }) => {
           alt="image backdrop"
           className=" rounded-lg h-52 w-full object-cover object-bottom-right cursor-pointer"
           onClick={() => {
-            navigate(`/movies${movie._id}`);
+            navigate(`/movies/${movie._id}`);
             scrollTo(0, 0);
           }}
         />
@@ -36,7 +36,7 @@ const MovieCard = ({ movie }) => {
             className="px-4 py-2 text-sm bg-primary hover:bg-primary-dull transition rounded-full
             font-medium cursor-pointer"
             onClick={() => {
-              navigate(`/movies${movie._id}`);
+              navigate(`/movies/${movie._id}`);
               scrollTo(0, 0);
             }}
           >

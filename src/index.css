@@ -16,3 +16,7 @@ body {
   --color-primary: #f84565;
   --color-primary-dull: #d63854;
 }
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
