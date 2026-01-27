@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+
 import { dummyShowsData } from "../../assets/assets";
+
 import Loading from "../../components/extras/Loading";
 import Title from "../../components/extras/Title";
+
 import { dateFormat } from "../../lib/dateFormat";
 
 const ListShows = () => {
