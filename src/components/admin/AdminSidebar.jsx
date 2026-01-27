@@ -4,8 +4,9 @@ import {
   ListIcon,
   PlusSquareIcon,
 } from "lucide-react";
-import { assets } from "../../assets/assets";
 import { NavLink } from "react-router-dom";
+
+import { assets } from "../../assets/assets";
 
 const AdminSidebar = () => {
   const user = {
