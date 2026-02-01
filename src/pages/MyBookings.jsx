@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import Loading from "../components/extras/Loading";
 import BlurCircle from "../components/extras/BlurCircle";
@@ -73,12 +74,13 @@ const MyBookings = () => {
                 {item.amount}{" "}
               </p>
               {!item.isPaid && (
-                <button
+                <Link
+                  to={item.paymentLink}
                   className="bg-primary px-4 py-1.5 mb-3 text-sm rounded-full 
               font-medium cursor-pointer"
                 >
                   Pay Now
-                </button>
+                </Link>
               )}
             </div>
             <div className="text-sm">
