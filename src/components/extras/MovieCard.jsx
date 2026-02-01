@@ -4,8 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 import timeFormat from "/src/lib/timeFormat.js";
 
+import { useAppContext } from "../../context/AppContext";
+
 const MovieCard = ({ movie }) => {
   const navigate = useNavigate();
+
+  const { image_base_url } = useAppContext();
 
   return (
     <>
@@ -14,7 +18,7 @@ const MovieCard = ({ movie }) => {
         rounded-2xl hover:-translate-y-1 transition duration-300 w-66 "
       >
         <img
-          src={movie.backdrop_path}
+          src={image_base_url + movie.backdrop_path}
           alt="image backdrop"
           className=" rounded-lg h-52 w-full object-cover object-bottom-right cursor-pointer"
           onClick={() => {
