@@ -9,12 +9,12 @@
 
 body {
   color: white;
-  background-color: #121212;
+  background-color: #141414;
 }
 
 @theme {
-  --color-primary: #f84565;
-  --color-primary-dull: #d63854;
+  --color-primary: #ff7a00;
+  --color-primary-dull: #ff8c1a;
 }
 
 .no-scrollbar {

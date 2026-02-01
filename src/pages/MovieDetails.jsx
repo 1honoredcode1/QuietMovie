@@ -26,6 +26,8 @@ const MovieDetails = () => {
 
   const { id } = useParams();
   const [show, setShow] = useState(null);
+  const [trailerKey, setTrailerKey] = useState(null);
+  const [trailerLoading, setTrailerLoading] = useState(false);
 
   const getShow = async () => {
     try {
@@ -35,6 +37,27 @@ const MovieDetails = () => {
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const handleWatchTrailer = async () => {
+    try {
+      setTrailerLoading(true);
+
+      // show.movie._id might be your TMDB id if you saved it that way,
+      // but you already have the route param `id` which is your movie id
+      const { data } = await axios.get(`/api/show/trailer/${id}`);
+
+      if (!data.success) {
+        toast.error(data.message || "Trailer not found");
+        return;
+      }
+
+      setTrailerKey(data.trailer.key);
+    } catch (err) {
+      toast.error(err?.response?.data?.message || "Could not load trailer");
+    } finally {
+      setTrailerLoading(false);
     }
   };
 
@@ -96,12 +119,14 @@ const MovieDetails = () => {
           </p>
           <div className="flex items-center flex-wrap gap-4 mt-4">
             <button
+              onClick={handleWatchTrailer}
               className="flex items-center gap-2 px-7 py-3 text-sm bg-gray-800
-            hover:bg-gray-900 transition rounded-md font-medium cursor-pointer active:scale-95"
+  hover:bg-gray-900 transition rounded-md font-medium cursor-pointer active:scale-95"
             >
               <PlayCircle className="w-5 h-5" />
-              Watch Trailer
+              {trailerLoading ? "Loading..." : "Watch Trailer"}
             </button>
+
             <a
               href="#dateSelect"
               className="px-10 py-3 text-sm bg-primary hover:bg-primary-dull transition rounded-md font-medium cursor-pointer
@@ -155,6 +180,25 @@ const MovieDetails = () => {
           Show More
         </button>
       </div>
+      {trailerKey && (
+        <div
+          className="fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4"
+          onClick={() => setTrailerKey(null)}
+        >
+          <div
+            className="w-full max-w-3xl aspect-video bg-black rounded-lg overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <iframe
+              className="w-full h-full"
+              src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1`}
+              title="Trailer"
+              allow="autoplay; encrypted-media"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
     </div>
   ) : (
     <Loading />
